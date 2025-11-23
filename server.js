@@ -39,7 +39,7 @@ function maskBillingName(billingName) {
 
 function calculateDeliveryDate(orderIndex, totalOrders) {
   const startDate = new Date("2025-12-01");
-  const endDate = new Date("2026-01-31");
+  const endDate = new Date("2025-12-31");
   const totalDays = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24));
   const dayOffset = Math.floor((orderIndex / totalOrders) * totalDays);
   const deliveryDate = new Date(startDate);
