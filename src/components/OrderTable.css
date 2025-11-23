@@ -4,7 +4,9 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   min-height: 690px;
-  min-width: 392px;
+  max-width: 392px;
+  width: 100%;
+  overflow-x: auto;
   height: fit-content;
   position: relative;
 }
@@ -46,7 +48,8 @@
   width: 100%;
   border-collapse: collapse;
   min-height: 608px;
-  min-width: 392px;
+  max-width: 392px;
+  width: 100%;
   height: fit-content;
 }
 
