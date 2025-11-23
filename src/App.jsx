@@ -53,22 +53,22 @@ function App() {
     );
   }
 
-  if (!showTable) {
-    return (
-      <div className="app-container">
+  return (
+    <div className="app-container">
+      <img
+        src="/logo.webp"
+        alt="Selmanarts Logo"
+        style={{
+          width: "150px",
+          height: "auto",
+          objectFit: "contain",
+          margin: "0 auto",
+          display: "block",
+          marginBottom: "20px",
+        }}
+      />
+      {!showTable ? (
         <div className="welcome-message">
-          <img
-            src="/logo.webp"
-            alt="Selmanarts Logo"
-            style={{
-              width: "150px",
-              height: "auto",
-              objectFit: "contain",
-              margin: "0 auto",
-              display: "block",
-              marginBottom: "20px",
-            }}
-          />
           <div className="message-content">
             <p>Sevgili Müşterilerimiz,</p>
             <p>
@@ -100,30 +100,14 @@ function App() {
             Teslim Tarihleri
           </button>
         </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="app-container">
-      <img
-        src="/logo.webp"
-        alt="Selmanarts Logo"
-        style={{
-          width: "150px",
-          height: "auto",
-          objectFit: "contain",
-          margin: "0 auto",
-          display: "block",
-          marginBottom: "20px",
-        }}
-      />
-      <OrderTable
-        orders={orders}
-        currentPage={pagination.page}
-        totalPages={pagination.totalPages}
-        onPageChange={handlePageChange}
-      />
+      ) : (
+        <OrderTable
+          orders={orders}
+          currentPage={pagination.page}
+          totalPages={pagination.totalPages}
+          onPageChange={handlePageChange}
+        />
+      )}
       <p
         className="footer-text"
         style={{ fontSize: "10px", marginTop: "20px", textAlign: "center" }}
