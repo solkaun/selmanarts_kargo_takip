@@ -5,19 +5,21 @@ import "./App.css";
 
 function App() {
   const [orders, setOrders] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [pagination, setPagination] = useState({ page: 1, totalPages: 1 });
   const [showTable, setShowTable] = useState(false);
+  const [tableLoading, setTableLoading] = useState(false);
 
   useEffect(() => {
-    loadOrders(currentPage);
-  }, [currentPage]);
+    if (showTable) {
+      loadOrders(currentPage);
+    }
+  }, [currentPage, showTable]);
 
   const loadOrders = async (page) => {
     try {
-      setLoading(true);
+      setTableLoading(true);
       setError(null);
       const result = await fetchOrders(page, 10);
       setOrders(result.data || []);
@@ -26,32 +28,13 @@ function App() {
       setError(err.message || "Siparişler yüklenirken bir hata oluştu");
       console.error("Error loading orders:", err);
     } finally {
-      setLoading(false);
+      setTableLoading(false);
     }
   };
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
-
-  if (loading) {
-    return (
-      <div className="app-container">
-        <div className="loading">Yükleniyor...</div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="app-container">
-        <div className="error">
-          <p>{error}</p>
-          <button onClick={() => loadOrders(currentPage)}>Tekrar Dene</button>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="app-container">
@@ -101,12 +84,23 @@ function App() {
           </button>
         </div>
       ) : (
-        <OrderTable
-          orders={orders}
-          currentPage={pagination.page}
-          totalPages={pagination.totalPages}
-          onPageChange={handlePageChange}
-        />
+        <>
+          {error && (
+            <div className="error" style={{ marginBottom: "20px" }}>
+              <p>{error}</p>
+              <button onClick={() => loadOrders(currentPage)}>
+                Tekrar Dene
+              </button>
+            </div>
+          )}
+          <OrderTable
+            orders={orders}
+            currentPage={pagination.page}
+            totalPages={pagination.totalPages}
+            onPageChange={handlePageChange}
+            loading={tableLoading}
+          />
+        </>
       )}
       <p
         className="footer-text"

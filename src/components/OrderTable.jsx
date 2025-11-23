@@ -1,6 +1,6 @@
 import "./OrderTable.css";
 
-function OrderTable({ orders, currentPage, totalPages, onPageChange }) {
+function OrderTable({ orders, currentPage, totalPages, onPageChange, loading }) {
   const handlePrevious = () => {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
@@ -15,6 +15,12 @@ function OrderTable({ orders, currentPage, totalPages, onPageChange }) {
 
   return (
     <div className="order-table-container">
+      {loading && (
+        <div className="table-loading">
+          <div className="loading-spinner"></div>
+          <span>Yükleniyor...</span>
+        </div>
+      )}
       <table className="order-table">
         <thead>
           <tr>
@@ -23,7 +29,13 @@ function OrderTable({ orders, currentPage, totalPages, onPageChange }) {
           </tr>
         </thead>
         <tbody>
-          {orders.length === 0 ? (
+          {loading ? (
+            <tr>
+              <td colSpan="2" className="no-data">
+                <div className="loading-spinner"></div>
+              </td>
+            </tr>
+          ) : orders.length === 0 ? (
             <tr>
               <td colSpan="2" className="no-data">
                 Henüz sipariş bulunmamaktadır.
