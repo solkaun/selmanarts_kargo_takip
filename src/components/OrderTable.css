@@ -1,0 +1,94 @@
+.order-table-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-height: 644px;
+  min-width: 392px;
+}
+
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-height: 608px;
+  min-width: 392px;
+}
+
+.order-table thead {
+  background-color: gray;
+  color: white;
+}
+
+.order-table tbody {
+  min-height: 557px;
+  min-width: 392px;
+}
+
+.order-table th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.order-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s;
+}
+
+.order-table tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+.order-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.order-table td {
+  padding: 16px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.no-data {
+  text-align: center;
+  padding: 40px !important;
+  color: #666;
+  font-style: italic;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background-color: #fafafa;
+  border-top: 1px solid #e0e0e0;
+}
+
+.pagination-btn {
+  padding: 8px 16px;
+  background-color: gray;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background-color: darkgray;
+}
+
+.pagination-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  font-size: 0.95rem;
+  color: #666;
+  font-weight: 500;
+}
