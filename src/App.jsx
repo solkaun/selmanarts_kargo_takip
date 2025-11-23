@@ -9,6 +9,7 @@ function App() {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [pagination, setPagination] = useState({ page: 1, totalPages: 1 });
+  const [showTable, setShowTable] = useState(false);
 
   useEffect(() => {
     loadOrders(currentPage);
@@ -47,6 +48,46 @@ function App() {
         <div className="error">
           <p>{error}</p>
           <button onClick={() => loadOrders(currentPage)}>Tekrar Dene</button>
+        </div>
+      </div>
+    );
+  }
+
+  if (!showTable) {
+    return (
+      <div className="app-container">
+        <div className="welcome-message">
+          <h1>Kargo Takip - Selman Arts</h1>
+          <div className="message-content">
+            <p>Sevgili Müşterilerimiz,</p>
+            <p>
+              Ürünlerimizin tamamı bizzat el üretimi ile hazırlanmakta ve seri
+              üretim yapılmamaktadır. Bu nedenle bazı siparişlerimizin teslimat
+              süreleri beklediğimizden daha uzun sürebilmektedir. Anlayışınız ve
+              sabrınız için teşekkür ederiz.
+            </p>
+            <p>
+              Siparişinizin durumunu her an kontrol edebilirsiniz:{" "}
+              <a
+                href="https://account.selmanarts.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://account.selmanarts.com
+              </a>{" "}
+              üzerinden, siparişinizi oluştururken kullandığınız e-posta ile
+              giriş yaparak sipariş bilgilerinize ve tahmini teslim tarihine
+              ulaşabilirsiniz.
+            </p>
+            <p>
+              Biz kalite ve şeffaflığı her zaman önceliğimiz olarak sunuyoruz ve
+              siparişlerinizin güvenle hazırlanıp teslim edildiğinden emin
+              olabilirsiniz.
+            </p>
+          </div>
+          <button className="show-table-btn" onClick={() => setShowTable(true)}>
+            Teslim Tarihleri
+          </button>
         </div>
       </div>
     );
