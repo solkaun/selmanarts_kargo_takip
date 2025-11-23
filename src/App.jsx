@@ -57,7 +57,18 @@ function App() {
     return (
       <div className="app-container">
         <div className="welcome-message">
-          <h1>Kargo Takip - Selman Arts</h1>
+          <img
+            src="/logo.webp"
+            alt="Selmanarts Logo"
+            style={{
+              width: "150px",
+              height: "auto",
+              objectFit: "contain",
+              margin: "0 auto",
+              display: "block",
+              marginBottom: "20px",
+            }}
+          />
           <div className="message-content">
             <p>Sevgili Müşterilerimiz,</p>
             <p>
