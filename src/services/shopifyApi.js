@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:3001";
+const API_BASE_URL = "https://kargo.selmanarts.com";
 
 export async function fetchOrders(page = 1, limit = 10) {
   try {
