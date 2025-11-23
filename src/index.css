@@ -24,7 +24,7 @@ body {
 
 #root {
   min-height: 100vh;
-  height: 100vh;
+  height: fit-content;
   min-width: 100vw;
   width: 100vw;
   padding: 1rem;
